@@ -1,0 +1,23 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#551FBD;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#53FBA1;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Circle background -->
+  <circle cx="50" cy="50" r="45" fill="url(#logoGradient)" opacity="0.1"/>
+  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#logoGradient)" stroke-width="2"/>
+  
+  <!-- Lightbulb shape -->
+  <g transform="translate(50, 50)">
+    <!-- Bulb -->
+    <circle cx="0" cy="-8" r="12" fill="url(#logoGradient)"/>
+    <!-- Base of bulb -->
+    <rect x="-4" y="4" width="8" height="6" fill="url(#logoGradient)"/>
+    <!-- Filament -->
+    <path d="M -2 -2 Q -4 0 -2 4" stroke="url(#logoGradient)" stroke-width="1.5" fill="none"/>
+    <path d="M 2 -2 Q 4 0 2 4" stroke="url(#logoGradient)" stroke-width="1.5" fill="none"/>
+  </g>
+</svg>
