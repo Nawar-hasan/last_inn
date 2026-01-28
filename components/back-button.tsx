@@ -1,9 +1,8 @@
 "use client"
 
 import { useRouter, usePathname } from "next/navigation"
-import { ArrowLeft, ArrowRight } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
-import { Button } from "@/components/ui/button"
 
 export function BackButton() {
   const router = useRouter()
@@ -27,24 +26,35 @@ export function BackButton() {
   }
 
   return (
-    <Button
-      variant="ghost"
-      size="sm"
+    <button
       onClick={handleBack}
-      className="fixed top-24 left-4 z-40 flex items-center gap-2 bg-background/80 backdrop-blur-sm border border-border/50 shadow-lg hover:bg-background/90 hover:shadow-xl transition-all duration-300 rounded-full px-4 py-2 group"
-      style={{ fontFamily: "var(--font-rubik)" }}
+      className="fixed top-24 right-4 z-40 group cursor-pointer"
+      aria-label={isArabic ? "رجوع للخلف" : "Go back"}
     >
-      {isArabic ? (
-        <>
-          <span className="text-sm font-medium">{isArabic ? "رجوع" : "Back"}</span>
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-        </>
-      ) : (
-        <>
-          <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-          <span className="text-sm font-medium">Back</span>
-        </>
-      )}
-    </Button>
+      {/* Outer glow */}
+      <div className="absolute inset-0 rounded-full bg-purple-500/20 blur-md group-hover:blur-lg transition-all duration-300 scale-110 group-hover:scale-125" />
+      
+      {/* Main button with 3D effect */}
+      <div 
+        className="relative h-12 w-12 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-active:scale-95"
+        style={{
+          background: 'linear-gradient(145deg, #7C3AED 0%, #551FBD 50%, #4C1D95 100%)',
+          boxShadow: `
+            0 6px 24px rgba(124, 58, 237, 0.4),
+            0 3px 12px rgba(0, 0, 0, 0.2),
+            inset 0 2px 4px rgba(255, 255, 255, 0.2),
+            inset 0 -2px 4px rgba(0, 0, 0, 0.2)
+          `,
+        }}
+      >
+        {/* Inner highlight */}
+        <div className="absolute inset-1 rounded-full bg-gradient-to-b from-white/15 to-transparent pointer-events-none" />
+        
+        {/* Arrow icon - rotated for RTL */}
+        <ArrowLeft 
+          className={`h-5 w-5 text-white drop-shadow-md transition-transform duration-300 group-hover:-translate-x-0.5 ${isArabic ? "rotate-180 group-hover:translate-x-0.5" : ""}`}
+        />
+      </div>
+    </button>
   )
 }
