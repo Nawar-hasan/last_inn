@@ -12,6 +12,7 @@ import { LanguageProvider } from "@/lib/language-context"
 import { AuthProvider } from "@/lib/auth-context"
 import { WhatsAppChat } from "@/components/whatsapp-chat"
 import { Toaster } from "@/components/toaster"
+import { BackButton } from "@/components/back-button"
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -114,6 +115,8 @@ export default function RootLayout({
                 </div>
                 <div className="relative z-10 pointer-events-auto">{children}</div>
               </Suspense>
+
+              <BackButton />
 
               <WhatsAppChat />
 
