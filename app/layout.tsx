@@ -102,17 +102,17 @@ export default function RootLayout({
           <LanguageProvider>
             <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
               <Suspense fallback={null}>
-                <div className="fixed inset-0 z-0 bg-background">
+                <div className="fixed inset-0 z-0 bg-background pointer-events-none">
                   <Plasma
                     color="#551FBD"
                     speed={0.8}
                     direction="forward"
                     scale={1.5}
                     opacity={0.4}
-                    mouseInteractive={true}
+                    mouseInteractive={false}
                   />
                 </div>
-                <div className="relative z-10">{children}</div>
+                <div className="relative z-10 pointer-events-auto">{children}</div>
               </Suspense>
 
               <WhatsAppChat />
